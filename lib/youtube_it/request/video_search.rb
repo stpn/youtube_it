@@ -14,30 +14,18 @@ class YouTubeIt
       attr_reader :tags                            # /-/tag1/tag2
       attr_reader :categories                      # /-/Category1/Category2
       attr_reader :video_format                    # format (1=mobile devices)
-      attr_reader :safe_search                     # safeSearch (none, [moderate], strict)
+      attr_reader :racy                            # racy ([exclude], include)
       attr_reader :author
-      attr_reader :lang                            # lt
-      attr_reader :restriction
-      attr_reader :duration
-      attr_reader :time
-      attr_reader :hd
-      attr_reader :caption
-      attr_reader :uploader
-      attr_reader :region
-      attr_reader :paid_content
-      attr_reader :location
-      attr_reader :location_radius
-      
-      
+      attr_reader :lang  
+      attr_reader :license
+
       def initialize(params={})
         # Initialize our various member data to avoid warnings and so we'll
         # automatically fall back to the youtube api defaults
         @max_results, @order_by,
-        @offset, @query,
+        @offset, @query, @license,
         @response_format, @video_format,
-        @safe_search, @author, @lang,
-        @duration, @time, @hd, @caption,
-        @uploader, @region, @location, @location_radius, @paid_content = nil
+        @racy, @author, @lang = nil
         @url = base_url
         @dev_key = params[:dev_key] if params[:dev_key]
 
@@ -73,19 +61,10 @@ class YouTubeIt
           'q' => @query,
           'alt' => @response_format,
           'format' => @video_format,
-          'safeSearch' => @safe_search,
+          'racy' => @racy,
           'author' => @author,
-          'restriction' => @restriction,
           'lr' => @lang,
-          'duration' => @duration,
-          'time' => @time,
-          'hd' => @hd,
-          'caption' => @caption,
-          'region' => @region,
-          'location' => @location,
-          'location-radius' => @location_radius,
-          'paid-content' => @paid_content,
-          'uploader' => @uploader
+          'license' => @license
         }
       end
 
