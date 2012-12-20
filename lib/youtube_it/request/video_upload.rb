@@ -557,6 +557,7 @@ class YouTubeIt
             mg.tag!("media:title", @opts[:title], :type => "plain")
             mg.tag!("media:description", @opts[:description], :type => "plain")
             mg.tag!("media:keywords", @opts[:keywords].join(","))
+            mg.tag!("media:license", "cc", :type => "text/html", :href=>'http://creativecommons.org/licenses/by/3.0/')
             mg.tag!('media:category', @opts[:category], :scheme => "http://gdata.youtube.com/schemas/2007/categories.cat")
             mg.tag!('yt:private') if @opts[:private]
             mg.tag!('media:category', @opts[:dev_tag], :scheme => "http://gdata.youtube.com/schemas/2007/developertags.cat") if @opts[:dev_tag]
