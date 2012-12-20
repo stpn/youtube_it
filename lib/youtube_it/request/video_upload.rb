@@ -75,6 +75,7 @@ class YouTubeIt
         @opts    = { :mime_type => 'video/mp4',
                      :title => '',
                      :description => '',
+                     :license => 'cc',
                      :category => 'People',
                      :keywords => [] }.merge(opts)
 
