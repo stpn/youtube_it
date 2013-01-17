@@ -6,7 +6,7 @@ class YouTubeIt
       private
 
       def base_url
-        "http://gdata.youtube.com/feeds/api/"
+        "http://gdata.youtube.com/feeds/api/"                
       end
 
       def set_instance_variables( variables )

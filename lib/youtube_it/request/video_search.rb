@@ -18,6 +18,7 @@ class YouTubeIt
       attr_reader :author
       attr_reader :lang  
       attr_reader :license
+      attr_reader :topicDetails
 
       def initialize(params={})
         # Initialize our various member data to avoid warnings and so we'll
@@ -25,7 +26,7 @@ class YouTubeIt
         @max_results, @order_by,
         @offset, @query, @license,
         @response_format, @video_format,
-        @racy, @author, @lang = nil
+        @racy, @author, @topicDetails, @lang = nil
         @url = base_url
         @dev_key = params[:dev_key] if params[:dev_key]
 
@@ -65,6 +66,7 @@ class YouTubeIt
           'author' => @author,
           'lr' => @lang,
           'license' => @license
+          'topicDetails' => @topicDetails
         }
       end
 
