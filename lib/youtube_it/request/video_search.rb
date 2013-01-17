@@ -65,7 +65,7 @@ class YouTubeIt
           'racy' => @racy,
           'author' => @author,
           'lr' => @lang,
-          'license' => @license
+          'license' => @license,
           'topicDetails' => @topicDetails
         }
       end
