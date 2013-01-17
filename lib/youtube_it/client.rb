@@ -110,7 +110,7 @@ class YouTubeIt
     else 
       video_id = "http://gdata.youtube.com/feeds/api/users/#{user}/uploads/?v=2#{@dev_key ? '&key='+@dev_key : ''}" 
     end
-      parser = YouTubeIt::Parser::VideoFeedParser.new(video_id)
+      parser = YouTubeIt::Parser::VideosFeedParser.new(video_id)
       parser.parse
     end
 
