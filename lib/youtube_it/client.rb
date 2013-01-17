@@ -105,7 +105,7 @@ class YouTubeIt
     def videos_by_user(user, categories)
       video_id = ""
     if !categories[:categories].empty?
-      cats = categories[:categories].map { |c| c.to_s }.join("%2C") 
+      cats = categories_to_params(categories[:categories])
       video_id = "http://gdata.youtube.com/feeds/api/users/#{user}/uploads?category=#{cats}?#{@dev_key ? '&key='+@dev_key : ''}"      
     else 
       video_id = "http://gdata.youtube.com/feeds/api/users/#{user}/uploads/?v=2#{@dev_key ? '&key='+@dev_key : ''}" 
@@ -113,6 +113,19 @@ class YouTubeIt
       parser = YouTubeIt::Parser::VideosFeedParser.new(video_id)
       parser.parse
     end
+
+
+    def categories_to_params(categories)
+        if categories.respond_to?(:keys) and categories.respond_to?(:[])
+          s = ""
+          s << categories[:either].map { |c| c.to_s }.join("%7C")  if categories[:either]
+          s << categories[:include].map { |c| c.to_s }.join("%2C") if categories[:include]
+          s << ("-" << categories[:exclude].map { |c| c.to_s }.join("/-")) if categories[:exclude]
+          s
+        else
+          categories.map { |c| c.to_s }.join("%2C")
+        end
+      end
 
 
     def video_upload(data, opts = {})
