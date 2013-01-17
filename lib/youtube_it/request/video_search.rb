@@ -28,6 +28,10 @@ class YouTubeIt
         @response_format, @video_format,
         @racy, @author, @topicDetails, @lang = nil
         @url = base_url
+        if( params[:user])
+          @url << "#{params[:user]}/uploads"
+        end
+
         @dev_key = params[:dev_key] if params[:dev_key]
 
         # Return a single video (base_url + /T7YazwP8GtY)
@@ -42,6 +46,7 @@ class YouTubeIt
         if( params[ :only_embeddable ] )
           @video_format = ONLY_EMBEDDABLE
         end
+
 
         @url << build_query_params(to_youtube_params)
         @url << fields_to_params(params.delete(:fields)) if params[:fields]
