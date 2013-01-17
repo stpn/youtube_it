@@ -109,6 +109,7 @@ class YouTubeIt
       # *Hash*:: string-keyed, string-valued permissions e.g., {'comment'=>'allowed','videoRespond'=>'moderated'}
       attr_reader :access_control
 
+
       # *Array*:: An array of YouTubeIt::Model::Thumbnail objects that contain information regarding the videos thumbnail images.
       attr_reader :thumbnails
 
@@ -141,7 +142,13 @@ class YouTubeIt
       attr_reader :latitude
       attr_reader :longitude
 
+      # license:
+      attr_reader :license
+
+
       # Videos related to the current video.
+
+
       #
       # === Returns
       #   YouTubeIt::Response::VideoSearch
