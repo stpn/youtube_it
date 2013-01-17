@@ -105,8 +105,8 @@ class YouTubeIt
     def videos_by_user(user, categories)
       video_id = ""
     if !categories[:categories].empty?
-      cats = categories[:categories].map { |c| c.to_s.capitalize }.join("%2C") 
-      video_id = "http://gdata.youtube.com/feeds/api/users/#{user}/uploads?category=#{cats}?v=2#{@dev_key ? '&key='+@dev_key : ''}"      
+      cats = categories[:categories].map { |c| c.to_s }.join("%2C") 
+      video_id = "http://gdata.youtube.com/feeds/api/users/#{user}/uploads?category=#{cats}?#{@dev_key ? '&key='+@dev_key : ''}"      
     else 
       video_id = "http://gdata.youtube.com/feeds/api/users/#{user}/uploads/?v=2#{@dev_key ? '&key='+@dev_key : ''}" 
     end
